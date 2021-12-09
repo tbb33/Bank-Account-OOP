@@ -8,6 +8,9 @@ class Account:
     def withdraw(self, amount):
         self.balance=self.balance-amount
 
+    def deposit(self, amount):
+        self.balance=self.balance+amount
+
     def commit(self):
         with open(self.newfilepath, 'w') as file:
             file.write(str(self.balance))
@@ -18,3 +21,6 @@ print(account.balance) #can access attributes of obj instance using dot notation
 account.withdraw(100)
 print(account.balance)
 account.commit() #implicitely pass obj instance
+account.deposit(200)
+print(account.balance)
+account.commit()
