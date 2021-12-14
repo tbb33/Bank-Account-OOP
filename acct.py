@@ -25,10 +25,20 @@ class Account:
 # print(account.balance)
 # account.commit()
 
-#use inheritance and creating subclass
-class Checking:
+#use inheritance to create subclass
+class Checking(Account): #pass name of base class
     def __init__(self, filepath):
         #call init from Account class -> creates min obj
         Account.__init__(self,filepath)
 
+    def transfer(self, amt):
+        checking.balance = checking.balance - amt
+
+
 checking=Checking("balance.txt")
+checking.deposit(10) #accessing method of base class
+print(checking.balance)
+checking.commit()
+checking.transfer(500)
+print(checking.balance)
+checking.commit()
