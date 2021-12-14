@@ -15,12 +15,20 @@ class Account:
         with open(self.newfilepath, 'w') as file:
             file.write(str(self.balance))
 
-account = Account("balance.txt") #may need to pass directory here for txt file
-print(account) #output main - occur when execute script (differs when import)
-print(account.balance) #can access attributes of obj instance using dot notation
-account.withdraw(100)
-print(account.balance)
-account.commit() #implicitely pass obj instance
-account.deposit(200)
-print(account.balance)
-account.commit()
+# account = Account("balance.txt") #may need to pass directory here for txt file
+# print(account) #output main - occur when execute script (differs when import)
+# print(account.balance) #can access attributes of obj instance using dot notation
+# account.withdraw(100)
+# print(account.balance)
+# account.commit() #implicitely pass obj instance
+# account.deposit(200)
+# print(account.balance)
+# account.commit()
+
+#use inheritance and creating subclass
+class Checking:
+    def __init__(self, filepath):
+        #call init from Account class -> creates min obj
+        Account.__init__(self,filepath)
+
+checking=Checking("balance.txt")
