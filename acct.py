@@ -27,18 +27,19 @@ class Account:
 
 #use inheritance to create subclass
 class Checking(Account): #pass name of base class
-    def __init__(self, filepath):
+    def __init__(self, filepath, fee):
         #call init from Account class -> creates min obj
         Account.__init__(self,filepath)
+        self.fee=fee #creating instance var
 
     def transfer(self, amt):
-        checking.balance = checking.balance - amt
+        checking.balance = checking.balance - amt - self.fee
 
 
-checking=Checking("balance.txt")
+checking=Checking("balance.txt", 5) #passing 5 for fee value
 checking.deposit(10) #accessing method of base class
-print(checking.balance)
+print(checking.balance) #instance var balance inherited from base class
 checking.commit()
-checking.transfer(500)
+checking.transfer(100)
 print(checking.balance)
 checking.commit()
